@@ -25,11 +25,14 @@ function get_products() {
 
 	$res;
 	$sql = "SELECT name, id, image, price FROM products;";
-    $result = $conn->query($sql);
+	// $result = $conn->query($sql);
+	$result = mysqli_query($conn, $sql);
 
-	if ($result->num_rows > 0) {
+	// if ($result->num_rows > 0) {
+	if (mysqli_num_rows($result) > 0) {
 	// output data of each row
-	while($row = $result->fetch_assoc()) {
+	// while($row = $result->fetch_assoc()) {
+	while($row = mysqli_fetch_assoc($result)) {
 		echo '<div class="product">
 		<div class="product_name">'
 		.$row["name"].

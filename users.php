@@ -42,4 +42,22 @@ function change_user_password($username, $password)
 	mysqli_close($conn);
 }
 
+function get_user_role($username)
+{
+	$conn = connect_to_shop_mysql();
+
+	$sql = "SELECT role FROM users
+		WHERE username = '" . $username . "';";
+	$result = mysqli_query($conn, $sql);
+	if (mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$role = $row["role"];
+	} else
+	{
+		$role = '';
+	}
+	mysqli_close($conn);
+	return $role;
+}
+
 ?>
