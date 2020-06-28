@@ -82,8 +82,8 @@ $table = "product_categories";
 $sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 	product_id INT(6) UNSIGNED,
 	category_id INT(6) UNSIGNED,
-	FOREIGN KEY (product_id) REFERENCES products (id),
-	FOREIGN KEY (category_id) REFERENCES categories (id),
+	FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE,
+	FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE,
 	UNIQUE(product_id, category_id)
 
 )";
@@ -115,8 +115,8 @@ $sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 	product_id INT(6) UNSIGNED,
 	order_id INT(6) UNSIGNED,
 	quantity INT(6) UNSIGNED,
-	FOREIGN KEY (product_id) REFERENCES products (id),
-	FOREIGN KEY (order_id) REFERENCES orders (id),
+	FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE,
+	FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE,
 	UNIQUE(product_id, order_id)
 	)";
 
