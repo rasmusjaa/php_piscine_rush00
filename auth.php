@@ -7,6 +7,7 @@ function auth($username, $password)
 	$conn = connect_to_shop_mysql();
 	$user = mysqli_real_escape_string($conn, $username);
 	$hashed_pw = hash('sha256', 'suolaa' . $password);
+
 	$sql = "SELECT * FROM users
 		WHERE username='" . mysqli_real_escape_string($conn, $user) . "'
 	 	AND password='" . mysqli_real_escape_string($conn, $hashed_pw) . "'";

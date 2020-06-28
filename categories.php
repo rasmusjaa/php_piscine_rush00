@@ -20,22 +20,54 @@ function add_category($name)
 	mysqli_close($conn);
 }
 
-
-function get_categories() {
+function rename_category($name, $newname)
+{
 	$conn = connect_to_shop_mysql();
 
-	$res;
+	$sql = "UPDATE categories SET name='" . $newname . "' WHERE name='" . $name . "';";
+
+	if (mysqli_query($conn, $sql)) {
+		echo "Record updated successfully";
+	} else {
+		echo "Error updating record: " . mysqli_error($conn) . "<br />";
+		return FALSE;
+	}
+	return TRUE;
+
+	mysqli_close($conn);
+}
+
+function remove_category($name)
+{
+	$conn = connect_to_shop_mysql();
+
+	$sql = "DELETE FROM categories WHERE name='" . $name . "';";
+
+	if (mysqli_query($conn, $sql)) {
+	echo "Record deleted successfully";
+	} else {
+		echo "Error deleting record: " . mysqli_error($conn);
+		return FALSE;
+	}
+	return TRUE;
+
+	mysqli_close($conn);
+}
+
+function get_categories()
+{
+	$conn = connect_to_shop_mysql();
+
 	$sql = "SELECT name, id FROM categories;";
     $result = mysqli_query($conn, $sql);
-
+	$categories = [];
 	if (mysqli_num_rows($result) > 0) {
-	// output data of each row
+
 	while($row = mysqli_fetch_assoc($result)) {
-		echo '<div class="category">
-		<div class="category_name">'
-		.$row["name"].
-		'</div></div>';
+
+		array_push($categories, $row);
 	}
+		return ($categories);
 	} else {
 	echo "0 results";
 	}

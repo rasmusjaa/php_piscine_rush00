@@ -1,7 +1,12 @@
+body {
+	font-family:sans-serif;
+}
+
 #navbar {
     display: flex;
-    background-color: gainsboro;
+    background-color: #000;
     padding: 10px;
+    color: #fff
 }
 
 #login_div {
@@ -10,20 +15,50 @@
 	flex-wrap: wrap;
 }
 
-.button1 {
+.button1, input[type="submit"] {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
     text-decoration: none;
-    color: initial;
-    background-color: white;
-    padding: 0px 4px;
-    border-radius: 2px;
+    color: #fff;
+    background-color: #000;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-family:sans-serif;
+    letter-spacing: 1px;
+    border: 0px;
+}
+
+input[type="submit"] {
+	padding: 10px 20px;
+}
+
+#navbar .button1, #navbar input[type="submit"] {
+   color: #000;
+   background-color: #fff;
+}
+
+.button1:hover, input[type="submit"]:hover,
+#navbar .button1:hover, #navbar input[type="submit"]:hover,
+.category input[type="submit"]:hover {
+    background-color: indigo;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+#top {
+	display: block;
+    padding: 15px 0px 25px;
+    width: 100%;
+    text-align: center;
+    background-color: #eee;
 }
 
 #product_display {
     display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
+	width: 85%;
 }
 
 .product_img {
@@ -40,42 +75,239 @@
 }
 
 .product_info {
-    display: flex;
+    display: block;
+}
+
+.product_info input[type="submit"]{
+	width: 100%;
+	border-radius: 0px !important;
+	color: #000 !important;
+}
+
+.product_info form {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+
+.product_info form:after{
+	position: absolute;
+	display: block;
+	width: 100%;
+	text-align: center;
+	top: 10px;
+	z-index:99;
+	color: #fff;
+	content: "Add to Basket";
+	font-weight: 700;
+    font-family:sans-serif;
+	font-size:13px;
+	pointer-events:none;
 }
 
 .product_price {
-    margin: 4px auto    ;
+    margin: 10px auto;
+    display: block;
+    width: 100%;
+    text-align:center;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .product_name {
-    padding: 4px;
+    padding: 10px 0px;
     background-color: #dddddd;
     margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
 }
 
-.button1:hover {
-    background-color: #eeeeee;
-    transition: background-color 0.1s;
+.order_info {
+	background-color: #f9f9f9;
+	padding: 4px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.admin_product {
+	width: 100%;
+	background-color: #f1f1f1;
+	padding: 4px;
+	display: flex;
+}
+
+.admin_product_name {
+	margin-right: 10px;
+}
+
+
+.admin_product_price {
+	margin-left: auto;
+}
+
+.cart_product form {
+	float: left;
+	width: 70px;
+}
+
+.cart_product_info {
+	margin-top: 10px;
+}
+
+.cart_product {
+    background-color: #dddddd;
+    width: calc(100% - 20px);
+    padding: 10px;
+	margin: 4px 0px;
+	display: inline-block;
+	position: relative;
+}
+
+.cart_product form input[type="submit"] {
+	color: #000;
+}
+
+.cart_product form input[type="submit"]:hover {
+	color: indigo;
+}
+
+.cart_product form:after{
+	position: absolute;
+    display: block;
+    top: 17px;
+    left: 28px;
+    z-index: 99;
+    color: red;
+    content: "X";
+    font-weight: 700;
+    font-family: sans-serif;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.cart_price {
+    margin-left: auto;
 }
 
 #categories {
-    background-color: beige;
-    width: 20%;
+    background-color: #eeeeee;
+	width: 15%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
-.category {
-   background-color: #999999;
-   margin: 5px;
-   padding: 5px;
-   border-radius: 4px;
-   cursor: pointer;
+.category input[type="submit"]{
+	background-color: #000;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    min-width: 140px;
 }
-.category:hover {
-    background-color: #888888;
-    transition: background-color 0.1s;
 
-}
 
 #main_view {
     display: flex;
+}
+
+#form_container {
+	margin: 50px auto;
+}
+
+#form_container input[type="text"], #form_container input[type="password"] {
+	width:	98%;
+}
+
+#form_container input {
+	margin:	5px 0px;
+}
+
+#validate {
+	margin: 30px 0px;
+}
+
+.admin_section {
+	margin-top: 20px;
+	display: block;
+	width: 100%;
+	padding-bottom:20px;
+	border-bottom: 1px solid black;
+}
+
+.admin_section input{
+	margin: 0px 0px 10px;
+}
+
+.admin_area {
+	display: block;
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+}
+
+h2 {
+	margin: 0px 10px 25px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+@media only screen and (max-width: 1200px) {
+	#categories {
+		width: 25%;
+	}
+	#product_display {
+		width: 75%;
+	}
+	.product {
+		width: 46%;
+		margin: 2%;
+	}
+	#navbar {
+		display: block;
+	}
+	#navbar form, #validate form {
+		width: 100%;
+		margin: auto !important;
+		margin-bottom: 20px !important;
+	}
+	#buttons {
+		margin: auto;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	#main_view {
+		display: block;
+	}
+	#categories {
+		display: block;
+		width: 100%;
+	}
+	#product_display {
+		display: block;
+		width: 100%;
+	}
+	.product {
+		width: 90%;
+		margin: 5%;
+	}
+	#buttons .button1 {
+		display: block;
+    	margin: 20px;
+	}
+	#navbar input[type="text"], #navbar input[type="password"],
+	#validate input[type="text"], #validate input[type="password"] {
+		width:	98%;
+		margin-bottom: 10px;
+	}
 }

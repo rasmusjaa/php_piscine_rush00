@@ -83,7 +83,9 @@ $sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 	product_id INT(6) UNSIGNED,
 	category_id INT(6) UNSIGNED,
 	FOREIGN KEY (product_id) REFERENCES products (id),
-	FOREIGN KEY (category_id) REFERENCES categories (id)
+	FOREIGN KEY (category_id) REFERENCES categories (id),
+	UNIQUE(product_id, category_id)
+
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -112,8 +114,10 @@ $table = "order_products";
 $sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 	product_id INT(6) UNSIGNED,
 	order_id INT(6) UNSIGNED,
+	quantity INT(6) UNSIGNED,
 	FOREIGN KEY (product_id) REFERENCES products (id),
-	FOREIGN KEY (order_id) REFERENCES orders (id)
+	FOREIGN KEY (order_id) REFERENCES orders (id),
+	UNIQUE(product_id, order_id)
 	)";
 
 if (mysqli_query($conn, $sql)) {
@@ -151,6 +155,8 @@ add_category($name);
 
 $name = "ball games";
 add_category($name);
+
+
 
 echo "<br />Categories ready: frisbeegolf, volleyball, football and ball games<br /><br />";
 
@@ -196,6 +202,38 @@ $image = "./images/volleyball_wilson.jpg";
 add_product($name, $price, $image);
 
 echo "<br />Products ready: Adidas Football, Nike Football, Black frisbee, Orange frisbee, White frisbee, Yellow frisbee, Mikasa volleyball, Wilson volleyball<br /><br />";
+
+add_product_to_category(1, 3);
+add_product_to_category(2, 3);
+
+add_product_to_category(3, 1);
+add_product_to_category(4, 1);
+add_product_to_category(5, 1);
+add_product_to_category(6, 1);
+
+add_product_to_category(7, 2);
+add_product_to_category(8, 2);
+
+add_product_to_category(1, 4);
+add_product_to_category(2, 4);
+add_product_to_category(7, 4);
+add_product_to_category(8, 4);
+
+// 1 frisbeegolf
+// 2 volleyball
+// 3 football
+// 4 ball game
+
+// 1 Adidas Football
+// 2 Nike Football
+// 3 Black frisbee
+// 4 Orange frisbee
+// 5 White frisbee
+// 6 Yellow frisbee
+// 7 Mikasa volleyball
+// 8 Wilson volleyball
+
+echo "<br />Products categorized<br /><br />";
 
 
 $name = "user42";
